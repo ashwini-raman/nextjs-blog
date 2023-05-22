@@ -6,9 +6,12 @@
     "start": "next start"
   },
   "dependencies": {
+    "antd": "^5.5.0",
     "gray-matter": "^4.0.3",
     "next": "latest",
+    "pg-promise": "^11.4.3",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "styled-components": "^6.0.0-rc.1"
   }
 }
