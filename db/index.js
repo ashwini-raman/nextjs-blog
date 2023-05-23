@@ -12,6 +12,7 @@ const createSingleton = (name, create) => {
   return scope;
 };
 
+console.log('database url', process.env.DATABASE_URL);
 export const client = () => createSingleton('my-app-db-space', () => pgp(process.env.DATABASE_URL));
 
 // const pgp = require("pg-promise")();

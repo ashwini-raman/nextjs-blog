@@ -16,5 +16,8 @@ module.exports = (phase, { defaultConfig }) => {
       config.plugins.push(new webpack.IgnorePlugin({ resourceRegExp: /^pg-native$/ }));
       return config
     },
+    env: {
+      DATABASE_URL: process.env.DATABASE_URL
+    }
   }
 }
