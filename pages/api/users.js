@@ -16,7 +16,6 @@
 //   return json({data:result});
 // }
 
-// import { client } from '../../db';
 export default async function handler(req, res) {
   res.status(200).json({data: "hello"});
   // try {

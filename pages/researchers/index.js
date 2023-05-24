@@ -1,11 +1,13 @@
 import Layout from '../../components/layout';
 import styles from './researchers.module.css';
 import { Space, Table, Tag } from 'antd';
-const { client } = require('../../db');
-  const db = client();
-// const db = require("../../db");
-const pgp = require("pg-promise")();
-import { getUsers } from '../api/users';
+// const { client } = require('../../db');
+//   const db = client();
+// const pgp = require("pg-promise")();
+// import { getUsers } from '../api/users';
+import { useEffect, useState } from 'react';
+// import { getAllUsers } from '../../services/users';
+import useSWR from 'swr';
 
 const columns = [
   {
@@ -36,21 +38,24 @@ const columns = [
 //   },
 // ];
 
-export const getServerSideProps = async () => {
+// export const getServerSideProps = async () => {
   // const data = await getUsers();
-  const query = pgp.as.format(
-    ` SELECT id, name, email
-      FROM clinical_trials.users`,
-  );
-  const data = await db.query(query);
-  return {
-    props: {
-      data,
-    },
-  };
-}
+  
+  // const query = pgp.as.format(
+  //   ` SELECT id, name, email
+  //     FROM clinical_trials.users`,
+  // );
+  // const data = await db.query(query);
+  // console.log(data);
+  // return {
+  //   props: {
+  //     data,
+  //   },
+  // };
+// }
 
-export default function Researchers({data}) {
+// export default function Researchers({data}) {
+export default function Researchers() {
   const handleInsert = async () => {
     try {
       const response = await fetch('/api/users', {
@@ -68,7 +73,15 @@ export default function Researchers({data}) {
       console.error(error.message);
     }
   };
+  const fetcher = (url) => fetch(url, {
+     headers: {
+      'Content-Type': 'application/json',
+     },
+    }).then(response => response.json());
+  const{ data, error } = useSWR('http://localhost:3001', fetcher);
 
+ console.log(data);
+//  console.log(error);
   return (
     <Layout>
       <div className={styles.pageTitle}>
