@@ -78,7 +78,7 @@ export default function Researchers() {
       'Content-Type': 'application/json',
      },
     }).then(response => response.json());
-  const{ data, error } = useSWR('http://localhost:3001', fetcher);
+  const{ data, error } = useSWR('https://ec2-13-239-19-148.ap-southeast-2.compute.amazonaws.com:3001/', fetcher);
 
  console.log(data);
 //  console.log(error);
