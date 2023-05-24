@@ -76,6 +76,7 @@ export default function Researchers() {
   const fetcher = (url) => fetch(url, {
      headers: {
       'Content-Type': 'application/json',
+      'Content-Security-Policy': 'upgrade-insecure-requests'
      },
     }).then(response => response.json());
   const{ data, error } = useSWR('http://ec2-3-27-115-228.ap-southeast-2.compute.amazonaws.com:3001/api/users', fetcher);
